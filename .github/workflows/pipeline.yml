@@ -1,0 +1,27 @@
+name: Build and test 
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Use Node.js18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: Install project dependenncies
+      run: npm install
+    - name: Run test
+      run: npm test:unit
+    - name: username @ivo_d_ivanov
+      run: echo "@ivo_d_ivanov"
